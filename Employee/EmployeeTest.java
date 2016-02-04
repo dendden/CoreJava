@@ -19,14 +19,19 @@ public class EmployeeTest {
 }
 
 class Employee {
-	private String name;
+	private static int nextID = 1;
+	
+	private int id;
+	private final String name;
 	private double salary;
 	private LocalDate hireDay;
 	
 	public Employee(String aName, double aSalary, int year, int month, int day) {
+		id = nextID;
 		name = aName;
 		salary = aSalary;
 		hireDay = LocalDate.of(year,month,day);
+		nextID += 1;
 	}
 	
 	public String getName() {
@@ -46,6 +51,8 @@ class Employee {
 	}
 	
 	public String displayProfile() {
-		return "name: " + name + " // salary: " + salary + " // date hired: " + hireDay.toString(); 
+		String profile = String.format("ID: %05d // name: %s // salary: %.2f // date hired: %s",
+				this.id, this.name, this.salary, this.hireDay.toString());
+		return profile;
 	}
 }
