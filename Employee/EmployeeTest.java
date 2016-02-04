@@ -15,6 +15,8 @@ public class EmployeeTest {
 		for ( Employee e : staff ) {
 			System.out.println(e.displayProfile());
 		}
+		
+		System.out.printf("Next employee will have ID %05d\n", Employee.getNextID());
 	}
 }
 
@@ -34,6 +36,9 @@ class Employee {
 		nextID += 1;
 	}
 	
+	public static int getNextID() {
+		return nextID;
+	}
 	public String getName() {
 		return name;
 	}
